@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('vergestables', function (Blueprint $table){
-            $table->id();
+        Schema::create('T_food', function (Blueprint $table){
+            $table->increments('id');
             $table->string('name');
-            $table->integer('count');
-            $table->float('price');
             $table->string('images');
-            $table->rememberToken();
+            $table->float('currentPrice');
+            $table->float('amountPrice');
+            $table->string('describles');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('vergestables');
+        Schema::dropIfExists('T_food');
     }
 };

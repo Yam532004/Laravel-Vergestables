@@ -1,12 +1,12 @@
 <?php
 
 namespace Database\Seeders;
+use  App\Models\T_food;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Vergestable;
 
-class VergestableSeeder extends Seeder
+class T_FoodSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class VergestableSeeder extends Seeder
     public function run(): void
     {
         //
-        Vergestable::factory()
+        T_food::factory()
         ->count(5)
         ->create();
     }

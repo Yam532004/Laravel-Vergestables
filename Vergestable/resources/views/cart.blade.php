@@ -22,101 +22,67 @@
 
 
 @section ('content')
-<div class="untree_co-section before-footer-section">
-    <div class="container">
-        <div class="row mb-5">
-            <form class="col-md-12" method="post">
-                <div class="site-blocks-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="product-id">ID</th>
-                                <th class="product-thumbnail">Image</th>
-                                <th class="product-name">VergesName</th>
-                                <th class="product-quantity">Count</th>
-                                <th class="product-price">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ( $vergests as $vergest )
-                            <tr>
-                                <td>{{$vergest->id}}</td>
-                                <td class="product-thumbnail">
-                                    <img src="{{ asset('/images/'.$vergest->images) }}" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">{{$vergest->name}}</h2>
-                                </td>
-                                <td class="product-quantity">
-                                    {{$vergest->count}}
-                                </td>
-                                <td class="product-price">{{$vergest->price}}</td>
-                                <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                            </tr>
-                            @endforeach 
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <button class="btn btn-black btn-sm btn-block">Update Cart</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label class="text-black h4" for="coupon">Coupon</label>
-                        <p>Enter your coupon code if you have one.</p>
-                    </div>
-                    <div class="col-md-8 mb-3 mb-md-0">
-                        <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-black">Apply Coupon</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 pl-5">
-                <div class="row justify-content-end">
-                    <div class="col-md-7">
-                        <div class="row">
-                            <div class="col-md-12 text-right border-bottom mb-5">
-                                <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <span class="text-black">Subtotal</span>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <strong class="text-black">$230.00</strong>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-md-6">
-                                <span class="text-black">Total</span>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <strong class="text-black">$230.00</strong>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
 </div>
+@endif
+<section id="w366_home_products-2" class="widget w366_home_products">
+    <section id="home-collections">
+        <div class="wrapper">
+            <div class="inner">
+                <div class="section-title">
+                    <h2>Sản Phẩm Của Chúng Tôi</h2>
+                </div>
+                <form action="" method="get">
+                <div class="col-4">
+                    <input type="search" class="form-control" placeholder="KeyWord" name="keywords" value="{{request()->keywords}}">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary btn-block" >Search</button>
+                </div>
+                </form>
+                <div class="tab">
+                    <a href="{{ route('cart') }}">Tất cả </a>
+                    <a href="{{ route('food-category', ['category_id' => 4]) }}">Hoa quả</a>
+                    <a href="{{ route('food-category', ['category_id' => 5]) }}">Thực phẩm khô</a>
+                    <a href="{{ route('food-category', ['category_id' => 6]) }}">Rau hữu cơ</a>
+                    <div id="tab_20" class="tabcontent" style="display: block;">
+                        <div class="container">
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                            @endif
+                            <div class="row">
+                                @foreach ($vergests as $vergest)
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="product-item">
+                                        <div style="width: 260px; height: 260px; overflow: hidden;">
+                                            <img style="width: 100%; height: 100%;" src="{{ asset('/images/'.$vergest->images) }}" />
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="product-title">
+                                                <a href="https://at10.mediawz.com/san-pham/nho-xanh/">{{$vergest->name}}</a>
+                                            </div>
+                                            <div class="product-price clearfix">
+                                                <span class="current-price"><span class="woocommerce-Price-amount amount">{{$vergest->currentPrice}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></span>
+                                                <span class="original-price"><s><span class="woocommerce-Price-amount amount">{{$vergest->amountPrice}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></s></span>
+                                            </div>
+                                            <div class="product-actions text-center clearfix">
+                                                <a href="{{ route('showpage', ['id' => $vergest->id]) }}">
+                                                    <button type="button" class="btn-buyNow buy-now medium--hide small--hide" data-id="1026777806">Detail</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</section>
 @endsection

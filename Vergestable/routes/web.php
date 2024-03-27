@@ -10,13 +10,20 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [UserController::class, 'home'])->name('homepage');
-Route::get('/create', [VergestableController::class, 'create'])->name('createpage');
 Route::get('/show/{id}', [VergestableController::class, 'show'])->name('showpage');
-Route::post('/destroy', [VergestableController::class, 'destroy'])->name('destroy');
+Route::get('/destroy/{id}', [VergestableController::class, 'destroy'])->name('destroy');
 Route::get('/shop', [VergestableController::class, 'shop'])->name('shoppage');
-Route::get('/aboutUs', [UserController::class, 'aboutUs'])->name('aboutUs');
 Route::get('/cart', [VergestableController::class, 'cart'])->name('cart');
-Route::get('/contactUs', [UserController::class, 'contactUs'])->name('contactUs');
+Route::get('/create', [VergestableController::class, 'create'])->name('createpage');
+Route::post('/create', [VergestableController::class, 'add'])->name('create-product');
+Route::get('/edit/{id}', [VergestableController::class, 'edit'])->name('editpage');
+Route::post('/update/{id}', [VergestableController::class, 'update'])->name('update');
+Route::get('/cart/{category_id}', [VergestableController::class, 'cartByCategoryId'])->name('food-category');
+
+
+
+
+
 
 
 

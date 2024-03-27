@@ -1,41 +1,52 @@
 @extends('/layouts/_layouts')
 
 @section('content')
-<div class="untree_co-section before-footer-section">
-    <div class="container">
-        <div class="row mb-5">
-            <form class="col-md-12" method="post">
-                <div class="site-blocks-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="product-id">ID</th>
-                                <th class="product-thumbnail">Image</th>
-                                <th class="product-name">VergesName</th>
-                                <th class="product-quantity">Count</th>
-                                <th class="product-price">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{$vergest->id}}</td>
-                                <td class="product-thumbnail">
-                                    <img src="{{ asset('/images/'.$vergest->images) }}" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">{{$vergest->name}}</h2>
-                                </td>
-                                <td class="product-quantity">
-                                    {{$vergest->count}}
-                                </td>
-                                <td class="product-price">{{$vergest->price}}</td>
-                                <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+<section id="w366_home_featured_product-2" class="widget w366_home_featured_product">
+    <section id="home-featured-products">
+        <div class="wrapper">
+            <div class="inner">
+                <div class="section-title">
+                    <h2>Sản Phẩm Nổi Bật</h2>
                 </div>
-            </form>
-        </div> 
-    </div>
-</div>
+                <div class="section-content">
+                    <div class="grid">
+                        <div class="product-deal">
+                            <div class="grid__item large--two-thirds medium--one-half small--one-whole">
+                                <div style="width: 260px; height: 260px; overflow: hidden;">
+                                    <img style="width: 100%; height: 100%;" src="{{ asset('/images/'.$vergest->images) }}" />
+                                </div>
+                            </div>
+                            <div class="grid__item large--one-third medium--one-half small--one-whole">
+                                <div class="product-info">
+                                    <div class="product-title">
+                                        <a href="https://at10.mediawz.com/san-pham/mung-toi/">{{$vergest->name}}</a>
+                                    </div>
+                                    <div class="product-price-review">
+                                        <div class="product-price">
+                                            <span class="current-price"><span class="woocommerce-Price-amount amount">{{$vergest->currentPrice}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></span>
+                                            <span class="original-price"><s><span class="woocommerce-Price-amount amount">{{$vergest->amountPrice}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></s></span>
+                                        </div>
+                                    </div>
+                                    <div class="product-desc">
+                                        {{$vergest->describles}}
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="{{ route('destroy', ['id' => $vergest->id]) }}">
+                                            <button type="button" class="btnHome btn-addToCart add-to-cart" data-id="1026672521"> <span>Delete</span></button><button style="display:none;" class=" btnHome btn-buyNow buy-now "></button>
+                                        </a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="{{ route('editpage', ['id' => $vergest->id]) }}">
+                                            <button type="button" class="btnHome btn-addToCart add-to-cart" data-id="1026672521"> <span>Edit</span></button><button style="display:none;" class=" btnHome btn-buyNow buy-now "></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
 @endsection
