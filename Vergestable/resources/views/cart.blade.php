@@ -59,7 +59,7 @@
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="product-item">
                                         <div style="width: 260px; height: 260px; overflow: hidden;">
-                                            <img style="width: 100%; height: 100%;" src="{{ asset('/images/'.$vergest->images) }}" />
+                                            <img style="width: 380px; height: 304px;" src="{{ asset('/images/'.$vergest->images) }}" />
                                         </div>
                                         <div class="product-info">
                                             <div class="product-title">

@@ -141,7 +141,8 @@ class VergestableController extends Controller
         }
 
         $food->save();
+        $vergest = T_food::find($id);
+        return view('show', compact('vergest'));
 
-        return back()->with('success', 'Edit new product Successful!');
     }
 }
